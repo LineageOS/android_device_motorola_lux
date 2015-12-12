@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2014-2015 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,18 +31,23 @@
 
 /******************************************************************************/
 
-#define LED_LIGHT_OFF 0
-#define LED_LIGHT_ON 255
+#define MAX_PATH_SIZE 80
+#define LOG_TAG "lights"
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
+static struct light_state_t g_notification;
 static struct light_state_t g_battery;
+static int g_attention = 0;
 
-char const*const CHARGING_LED_FILE
-        = "/sys/class/leds/charging/brightness";
+char const*const WHITE_LED_FILE
+        = "/sys/class/leds/rgb/brightness";
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
+
+char const*const RGB_CONTROL_FILE
+        = "/sys/class/leds/rgb/control";
 
 /**
  * device methods
@@ -77,6 +82,28 @@ write_int(char const* path, int value)
 }
 
 static int
+write_str(char const* path, char *value)
+{
+    int fd;
+    static int already_warned = 0;
+
+    fd = open(path, O_RDWR);
+    if (fd >= 0) {
+        char buffer[PAGE_SIZE];
+        int bytes = sprintf(buffer, "%s\n", value);
+        int amt = write(fd, buffer, bytes);
+        close(fd);
+        return amt == -1 ? -errno : 0;
+    } else {
+        if (already_warned == 0) {
+            ALOGE("write_str failed to open %s\n", path);
+            already_warned = 1;
+        }
+        return -errno;
+    }
+}
+
+static int
 is_lit(struct light_state_t const* state)
 {
     return state->color & 0x00ffffff;
@@ -103,36 +130,89 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
-set_speaker_light_locked(struct light_state_t const* state)
-{
-    int brightness_level;
-
-    if (is_lit(state))
-        brightness_level = LED_LIGHT_ON;
-    else
-        brightness_level = LED_LIGHT_OFF;
-
-    return write_int(CHARGING_LED_FILE, brightness_level);
-}
-
-static int
-handle_speaker_battery_locked()
-{
-    return set_speaker_light_locked(&g_battery);
-}
-
-static int
-set_light_battery(struct light_device_t* dev,
+set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    int err = 0;
-    pthread_mutex_lock(&g_lock);
-    g_battery = *state;
-    err = handle_speaker_battery_locked();
-    pthread_mutex_unlock(&g_lock);
-    return err;
+    int len;
+    int blink;
+    int onMS, offMS, ramp;
+    unsigned int colorRGB;
+    char blink_pattern[PAGE_SIZE];
+
+
+    switch (state->flashMode) {
+        case LIGHT_FLASH_TIMED:
+            onMS = state->flashOnMS;
+            offMS = state->flashOffMS;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            onMS = 0;
+            offMS = 0;
+            break;
+    }
+
+    colorRGB = state->color;
+#if 1
+    ALOGD("set_speaker_light_locked mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
+            state->flashMode, colorRGB, onMS, offMS);
+#endif
+
+    if (onMS > 0 && offMS > 0) {
+
+        blink = 1;
+        ramp = 1;
+    } else {
+        blink = 0;
+        ramp = 0;
+    }
+
+    // See hardware/libhardware/include/hardware/lights.h
+    int brightness = ((77 * ((colorRGB >> 16) & 0xFF)) +
+                      (150 * ((colorRGB >> 8) & 0xFF)) +
+                      (29 * (colorRGB & 0xFF))) >> 8;
+
+    sprintf(blink_pattern,"%6x %d %d %d %d",colorRGB,onMS,offMS,ramp,ramp);
+    write_str(RGB_CONTROL_FILE, blink_pattern);
+
+    return 0;
 }
 
+static void
+handle_speaker_battery_locked(struct light_device_t* dev)
+{
+    if (is_lit(&g_battery)) {
+        set_speaker_light_locked(dev, &g_battery);
+    } else {
+        set_speaker_light_locked(dev, &g_notification);
+    }
+}
+
+static int
+set_light_notifications(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    pthread_mutex_lock(&g_lock);
+    g_notification = *state;
+    handle_speaker_battery_locked(dev);
+    pthread_mutex_unlock(&g_lock);
+    return 0;
+}
+
+static int
+set_light_attention(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    pthread_mutex_lock(&g_lock);
+    if (state->flashMode == LIGHT_FLASH_HARDWARE) {
+        g_attention = state->flashOnMS;
+    } else if (state->flashMode == LIGHT_FLASH_NONE) {
+        g_attention = 0;
+    }
+    handle_speaker_battery_locked(dev);
+    pthread_mutex_unlock(&g_lock);
+    return 0;
+}
 
 
 /** Close the lights device */
@@ -161,8 +241,10 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
         set_light = set_light_backlight;
-    else if (0 == strcmp(LIGHT_ID_BATTERY, name))
-        set_light = set_light_battery;
+    else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
+        set_light = set_light_notifications;
+    else if (0 == strcmp(LIGHT_ID_ATTENTION, name))
+        set_light = set_light_attention;
     else
         return -EINVAL;
 
