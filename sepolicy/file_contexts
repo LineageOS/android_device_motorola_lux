@@ -1,0 +1,2 @@
+# NFC
+/dev/bcm2079x-i2c                                           u:object_r:nfc_device:s0
