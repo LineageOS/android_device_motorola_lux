@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEVICE=osprey
+DEVICE=lux
 VENDOR=motorola
 
 OUTDIR=vendor/$VENDOR/$DEVICE
@@ -24,7 +24,7 @@ OUTDIR=vendor/$VENDOR/$DEVICE
 
 LOCAL_PATH := \$(call my-dir)
 
-ifeq (\$(TARGET_DEVICE),osprey)
+ifeq (\$(TARGET_DEVICE),lux)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := com.qualcomm.location

@@ -1,22 +1,22 @@
-Unified Device Tree for Moto G 2015 (osprey)
+Unified Device Tree for Moto X Play (lux)
 ===========================================
 
-The Motorola Moto G 2015 (codenamed _"osprey"_) is a mid-range smartphone from Motorola mobility.
-It was announced on July 2015.
+The Motorola Moto X Play (codenamed _"lux"_) is a mid-range smartphone from Motorola Mobility.
+It was released in August 2015.
 
 Basic   | Spec Sheet
 -------:|:-------------------------
-CPU     | Quad-core 1.4 GHz Cortex-A53
-Chipset | Qualcomm MSM8916 Snapdragon 410
-GPU     | Adreno 306
-Memory  | 1/2 GB RAM
+CPU     | Octa-core 1.7/1.2 GHz Cortex-A53
+Chipset | Qualcomm MSM8939 Snapdragon 615
+GPU     | Adreno 405
+Memory  | 2 GB RAM
 Shipped Android Version | 5.1.1
-Storage | 8/16 GB
-MicroSD | Up to 32 GB
-Battery | Li-Ion 2470mAh battery
-Display | 720 x 1280 pixels, 5.0 inches (~294 ppi pixel density)
-Camera  | 13 MP, 4160 x 2340 pixels, autofocus, LED flash
+Storage | 16/32 GB
+MicroSD | Up to 128 GB
+Battery | Li-Ion 3630mAh battery
+Display | 1080 x 1920 pixels, 5.5 inches (~403 ppi pixel density)
+Camera  | 21 MP, 5344 x 4008 pixels, autofocus, LED flash
 
 Copyright 2015 - The CyanogenMod Project.
 
-![Moto G 2015](https://wiki.cyanogenmod.org/images/thumb/8/81/Osprey.png/314px-Osprey.png "Moto G 2015")
+![Moto X Play](https://wiki.cyanogenmod.org/images/thumb/8/81/Osprey.png/314px-Osprey.png "Moto X Play")

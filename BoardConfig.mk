@@ -15,27 +15,27 @@
 
 include device/motorola/msm8916-common/BoardConfigCommon.mk
 
--include vendor/motorola/osprey/BoardConfigVendor.mk
+-include vendor/motorola/lux/BoardConfigVendor.mk
 
-DEVICE_PATH := device/motorola/osprey
+DEVICE_PATH := device/motorola/lux
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := osprey,osprey_umts,osprey_u2,osprey_ud2,osprey_uds,osprey_cdma,osprey_udstv,xt1540,xt1541,xt1542,xt1543,xt1544,xt1548,xt1550
+TARGET_OTA_ASSERT_DEVICE := lux,xt1562,xt1563
 
 # Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_osprey.cpp
+TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_lux.cpp
 
 # Kernel
-TARGET_KERNEL_CONFIG := osprey_defconfig
+TARGET_KERNEL_CONFIG := lux_defconfig
 
 # Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216     # 16384 * 1024 mmcblk0p31
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16879616 # 16484 * 1024 mmcblk0p32
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2432696320 # 2375680 * 1024 mmcblk0p41
-BOARD_PERSISTIMAGE_PARTITION_SIZE := 8388608   # 8192 * 1024 mmcblk0p29
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 4865261568 # 4751232 * 1024 mmcblk0p42
+BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432	# 32768 * 1024 mmcblk0p31
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432	# 32768 * 1024 mmcblk0p32
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2852126720	# 2785280 * 1024 mmcblk0p41
+BOARD_PERSISTIMAGE_PARTITION_SIZE := 8388608 	# 8192 * 1024 mmcblk0p29
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 11815223296 # 11538304 * 1024 mmcblk0p42
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
