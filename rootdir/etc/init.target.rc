@@ -74,6 +74,10 @@ on post-fs-data
     # AK09912 calibration file directory
     mkdir /data/misc/akmd 0770 system compass
 
+    # NFC local data and nfcee xml storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
 # Start AKM executable
 service akmd09912 /system/bin/akmd09912
     class main
