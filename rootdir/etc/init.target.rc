@@ -100,14 +100,8 @@ on property:sys.boot_completed=1
 
     # HMP Task packing settings for 8939, 8929
     write /proc/sys/kernel/sched_small_task 20
-    write /proc/sys/kernel/sched_mostly_idle_load 30
-    write /proc/sys/kernel/sched_mostly_idle_nr_run 3
 
     # Enable sched guided freq control
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load 1
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif 1
     write /proc/sys/kernel/sched_freq_inc_notify 50000
     write /proc/sys/kernel/sched_freq_dec_notify 50000
 
@@ -120,12 +114,6 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu5/sched_mostly_idle_load 30
     write /sys/devices/system/cpu/cpu6/sched_mostly_idle_load 30
     write /sys/devices/system/cpu/cpu7/sched_mostly_idle_load 30
-
-    write /sys/class/devfreq/qcom,cpubw.64/governor "bw_hwmon"
-    write /sys/class/devfreq/qcom,cpubw.64/bw_hwmon/io_percent 20
-    write /sys/class/devfreq/qcom,gpubw.61/governor "bw_hwmon"
-    write /sys/class/devfreq/qcom,gpubw.61/bw_hwmon/io_percent 40
-    write /sys/class/devfreq/qcom,mincpubw.65/governor "cpufreq"
 
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 960000
@@ -159,9 +147,6 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "50 800000:65 1113600:90"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 499200
-
-    write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/governor "msm-adreno-tz"
-    write /sys/class/devfreq/qcom,cpubw.30/governor "cpufreq"
 
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/cluster_plug/parameters/cluster_plug_active 1
