@@ -91,7 +91,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.plmn_name_cmp", "1");
     }
     else if (ISMATCH(carrier, "retbr") || ISMATCH(carrier, "retla") || ISMATCH(carrier, "tefbr")
-            || ISMATCH(carrier, "timbr")) {
+            || ISMATCH(carrier, "timbr") || ISMATCH(carrier, "retmx")) {
         // These are dual SIM XT1563 devices
         setMsim();
         property_set("ro.product.model", "XT1563");
