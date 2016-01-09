@@ -1,9 +1,134 @@
-# Proprietary files for osprey
+# Proprietary files for lux
+
+# Audio
+etc/acdbdata/Bluetooth_cal.acdb
+etc/acdbdata/General_cal.acdb
+etc/acdbdata/Global_cal.acdb
+etc/acdbdata/Handset_cal.acdb
+etc/acdbdata/Hdmi_cal.acdb
+etc/acdbdata/Headset_cal.acdb
+etc/acdbdata/Speaker_cal.acdb
+etc/firmware/left.tfa9890.music.config
+etc/firmware/left.tfa9890.music.eq
+etc/firmware/left.tfa9890.ringtone.config
+etc/firmware/left.tfa9890.ringtone.eq
+etc/firmware/left.tfa9890.speaker
+etc/firmware/left.tfa9890.voice.config
+etc/firmware/left.tfa9890.voice.eq
+etc/firmware/left.tfa9890_music_table.preset
+etc/firmware/left.tfa9890_n1b12.patch
+etc/firmware/left.tfa9890_n1c2.patch
+etc/firmware/left.tfa9890_ringtone_table.preset
+etc/firmware/left.tfa9890_voice_table.preset
+
+# Camera
+bin/mm-qcamera-daemon
+lib/libAisAdapter.so
+lib/libAlAisLib.so
+lib/libAlAisTune.so
+lib/libAlAisWrap.so
+lib/libadvalgcore.so
+lib/libcamerabgproc-jni.so
+lib/libcamerabgprocservice.so
+lib/libjscore.so
+lib/libjustshoot.so
+lib/libmm-qcamera.so
+lib/libmmcamera_interface.so
+lib/libmmcamera_lux_standardization.so
+lib/libmmjpeg_interface.so
+lib/libqomx_core.so
+lib/hw/camera.msm8916.so:lib/hw/camera.vendor.msm8916.so
+vendor/lib/libSonyIMX230PdafLibrary.so
+vendor/lib/libactuator_lc898212xd.so
+vendor/lib/libactuator_lc898212xd_camcorder.so
+vendor/lib/libactuator_lc898212xd_camera.so
+vendor/lib/libjpegdhw.so
+vendor/lib/libjpegehw.so
+vendor/lib/libmm-abl-oem.so
+vendor/lib/libmm-abl.so
+vendor/lib/libmmcamera2_c2d_module.so
+vendor/lib/libmmcamera2_cpp_module.so
+vendor/lib/libmmcamera2_frame_algorithm.so
+vendor/lib/libmmcamera2_iface_modules.so
+vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_is.so
+vendor/lib/libmmcamera2_isp_modules.so
+vendor/lib/libmmcamera2_pproc_modules.so
+vendor/lib/libmmcamera2_sensor_modules.so
+vendor/lib/libmmcamera2_stats_algorithm.so
+vendor/lib/libmmcamera2_stats_modules.so
+vendor/lib/libmmcamera2_vpe_module.so
+vendor/lib/libmmcamera2_wnr_module.so
+vendor/lib/libmmcamera_faceproc.so
+vendor/lib/libmmcamera_hdr_gb_lib.so
+vendor/lib/libmmcamera_hdr_lib.so
+vendor/lib/libmmcamera_imglib.so
+vendor/lib/libmmcamera_imx230.so
+vendor/lib/libmmcamera_s5k5e2.so
+vendor/lib/libmmcamera_tintless_algo.so
+vendor/lib/libmmcamera_tintless_bg_pca_algo.so
+vendor/lib/libmmcamera_vstab_module.so
+vendor/lib/libmmcamera_wavelet_lib.so
+vendor/lib/libmmjpeg.so
+vendor/lib/libmmqjpeg_codec.so
+vendor/lib/liboemcamera.so
+vendor/lib/libqomx_jpegdec.so
+vendor/lib/libqomx_jpegenc.so
+
+# Chromatix
+vendor/lib/libchromatix_imx230_common.so
+vendor/lib/libchromatix_imx230_common_hdr.so
+vendor/lib/libchromatix_imx230_default_video.so
+vendor/lib/libchromatix_imx230_hfr_120fps.so
+vendor/lib/libchromatix_imx230_hfr_60fps.so
+vendor/lib/libchromatix_imx230_liveshot.so
+vendor/lib/libchromatix_imx230_liveshot_hdr.so
+vendor/lib/libchromatix_imx230_preview.so
+vendor/lib/libchromatix_imx230_preview_night.so
+vendor/lib/libchromatix_imx230_snapshot.so
+vendor/lib/libchromatix_imx230_snapshot_hdr.so
+vendor/lib/libchromatix_imx230_snapshot_night.so
+vendor/lib/libchromatix_imx230_video_hdr.so
+vendor/lib/libchromatix_s5k5e2_common.so
+vendor/lib/libchromatix_s5k5e2_default_video.so
+vendor/lib/libchromatix_s5k5e2_front_GS_common.so
+vendor/lib/libchromatix_s5k5e2_front_GS_default_video.so
+vendor/lib/libchromatix_s5k5e2_front_GS_hfr_60fps.so
+vendor/lib/libchromatix_s5k5e2_front_GS_liveshot.so
+vendor/lib/libchromatix_s5k5e2_front_GS_preview.so
+vendor/lib/libchromatix_s5k5e2_front_GS_snapshot.so
+vendor/lib/libchromatix_s5k5e2_front_KT_common.so
+vendor/lib/libchromatix_s5k5e2_front_KT_default_video.so
+vendor/lib/libchromatix_s5k5e2_front_KT_hfr_60fps.so
+vendor/lib/libchromatix_s5k5e2_front_KT_liveshot.so
+vendor/lib/libchromatix_s5k5e2_front_KT_preview.so
+vendor/lib/libchromatix_s5k5e2_front_KT_preview_night.so
+vendor/lib/libchromatix_s5k5e2_front_KT_snapshot.so
+vendor/lib/libchromatix_s5k5e2_front_KT_snapshot_night.so
+vendor/lib/libchromatix_s5k5e2_hfr_60fps.so
+vendor/lib/libchromatix_s5k5e2_liveshot.so
+vendor/lib/libchromatix_s5k5e2_preview.so
+vendor/lib/libchromatix_s5k5e2_snapshot.so
+
+# Charger
+bin/charge_only_mode
+
+# Graphics
+vendor/lib/libc2d30-a4xx.so
+
+# Graphics firmware
+etc/firmware/a420_pfp.fw
+etc/firmware/a420_pm4.fw
+
+# NFC
+etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd
 
 # Sensors
 bin/akmd09912
+lib/libmotocalibration.so
+lib/hw/sensors.msm8916.so
 
 # Touchscreen
-etc/firmware/synaptics-inx-s2726br_t-15052103-1d6479-osprey.tdat
-etc/firmware/synaptics-inx-s2726br_t-15060402-1dc9a8-osprey.tdat
-etc/firmware/synaptics-inx-s2726br_t-15062201-1dc9a8-osprey.tdat
+etc/firmware/synaptics-lgd-s332u-15102102-1fb0fc-lux.tdat
+etc/firmware/synaptics-s3346b-15011402-1b5aff-lux.tdat
+etc/firmware/synaptics-tdi-s3346lt-15063001-1debdd-lux.tdat
