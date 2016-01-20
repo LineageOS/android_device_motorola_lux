@@ -62,10 +62,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     property_get("ro.boot.hardware.sku", sku);
     property_get("ro.boot.carrier", carrier);
 
+    property_set("ro.product.model", sku);
+
     if (ISMATCH(carrier, "retgb") || ISMATCH(carrier, "reteu") || ISMATCH(carrier, "retde")
             || ISMATCH(carrier, "vfau")) {
         // These are single SIM XT1562 devices
-        property_set("ro.product.model", "XT1562");
         property_set("ro.product.device", "lux");
         property_set("ro.build.description", "lux_reteu-user 5.1.1 LPD23.118-10 15 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_reteu/lux:5.1.1/LPD23.118-10/15:user/release-keys");
@@ -78,7 +79,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     }
     else if (ISMATCH(sku, "XT1562") || ISMATCH(radio, "0x4")) {
         setMsim();
-        property_set("ro.product.model", "XT1562");
         property_set("ro.product.device", "lux_uds");
         property_set("ro.build.description", "lux_retasia_ds-user 5.1.1 LPD23.118-10 14 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_retasia_ds/lux_uds:5.1.1/LPD23.118-10/14:user/release-keys");
@@ -94,7 +94,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
             || ISMATCH(carrier, "timbr") || ISMATCH(carrier, "retmx")) {
         // These are dual SIM XT1563 devices
         setMsim();
-        property_set("ro.product.model", "XT1563");
         property_set("ro.product.device", "lux_uds");
         property_set("ro.build.description", "lux_retla_ds-user 5.1.1 LPD23.118-6.1 2 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_retla_ds/lux_uds:5.1.1/LPD23.118-6.1/2:user/release-keys");
@@ -106,7 +105,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.plmn_name_cmp", "1");
     }
     else if (ISMATCH(sku, "XT1563") || ISMATCH(radio, "0x8")) {
-        property_set("ro.product.model", "XT1563");
         property_set("ro.product.device", "lux");
         property_set("ro.build.description", "lux_retca-user 5.1.1 LPD23.118-10 19 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_retca/lux:5.1.1/LPD23.118-10/19:user/release-keys");
