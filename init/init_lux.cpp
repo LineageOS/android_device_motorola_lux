@@ -88,7 +88,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.mot_ecc_custid", "emea");
         property_set("persist.radio.mot_ecc_enabled", "1");
         property_set("persist.radio.process_sups_ind", "0");
-        property_set("persist.radio.plmn_name_cmp", "1");
     }
     else if (ISMATCH(carrier, "retbr") || ISMATCH(carrier, "retla") || ISMATCH(carrier, "tefbr")
             || ISMATCH(carrier, "timbr") || ISMATCH(carrier, "retmx")) {
@@ -102,7 +101,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
         property_set("persist.radio.mot_ecc_enabled", "1");
         property_set("persist.radio.process_sups_ind", "1");
-        property_set("persist.radio.plmn_name_cmp", "1");
     }
     else if (ISMATCH(sku, "XT1563") || ISMATCH(radio, "0x8")) {
         property_set("ro.product.device", "lux");
@@ -123,5 +121,6 @@ static void setMsim(void)
 {
     property_set("persist.radio.force_get_pref", "1");
     property_set("persist.radio.multisim.config", "dsds");
+    property_set("persist.radio.plmn_name_cmp", "1");
     property_set("ro.telephony.ril.config", "simactivation");
 }
