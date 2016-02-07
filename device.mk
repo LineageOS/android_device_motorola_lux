@@ -19,7 +19,8 @@ $(call inherit-product, device/motorola/msm8916-common/msm8916.mk)
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths_florida.xml
 
 # Media
 PRODUCT_COPY_FILES += \
