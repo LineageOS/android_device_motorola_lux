@@ -20,7 +20,9 @@ etc/firmware/left.tfa9890_n1b12.patch
 etc/firmware/left.tfa9890_n1c2.patch
 etc/firmware/left.tfa9890_ringtone_table.preset
 etc/firmware/left.tfa9890_voice_table.preset
-lib/audio.primary.msm8916.so
+lib/hw/audio.primary.default.so
+lib/hw/audio.primary.msm8916.so
+lib/hw/audio_policy.default.so
 lib/libmotaudioutils.so
 lib/libunshorten.so
 
