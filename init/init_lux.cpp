@@ -37,7 +37,8 @@
 
 #include "init_msm.h"
 
-static void setMsim(void);
+static void dual_sim(void);
+static void single_sim(void);
 
 void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
@@ -73,6 +74,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     if (!force_msim && (ISMATCH(carrier, "retgb") || ISMATCH(carrier, "reteu") || ISMATCH(carrier, "retde")
             || ISMATCH(carrier, "vfau"))) {
         // These are single SIM XT1562 devices
+        single_sim();
         property_set("ro.product.device", "lux");
         property_set("ro.build.description", "lux_reteu-user 5.1.1 LPD23.118-10 15 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_reteu/lux:5.1.1/LPD23.118-10/15:user/release-keys");
@@ -84,7 +86,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.process_sups_ind", "0");
     }
     else if (ISMATCH(sku, "XT1562") || ISMATCH(radio, "0x4")) {
-        setMsim();
+        dual_sim();
         property_set("ro.product.device", "lux_uds");
         property_set("ro.build.description", "lux_retasia_ds-user 5.1.1 LPD23.118-10 14 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_retasia_ds/lux_uds:5.1.1/LPD23.118-10/14:user/release-keys");
@@ -98,7 +100,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     else if (force_msim || ISMATCH(carrier, "retbr") || ISMATCH(carrier, "retla") || ISMATCH(carrier, "tefbr")
             || ISMATCH(carrier, "timbr") || ISMATCH(carrier, "retmx")) {
         // These are dual SIM XT1563 devices
-        setMsim();
+        dual_sim();
         property_set("ro.product.device", "lux_uds");
         property_set("ro.build.description", "lux_retla_ds-user 5.1.1 LPD23.118-6.1 2 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_retla_ds/lux_uds:5.1.1/LPD23.118-6.1/2:user/release-keys");
@@ -109,12 +111,14 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
         property_set("persist.radio.process_sups_ind", "1");
     }
     else if (ISMATCH(sku, "XT1563") || ISMATCH(radio, "0x8")) {
+        single_sim();
         property_set("ro.product.device", "lux");
         property_set("ro.build.description", "lux_retca-user 5.1.1 LPD23.118-10 19 release-keys");
         property_set("ro.build.fingerprint", "motorola/lux_retca/lux:5.1.1/LPD23.118-10/19:user/release-keys");
         property_set("ro.build.product", "lux");
         property_set("ro.mot.build.customerid", "retca");
         property_set("ro.gsm.data_retry_config", "");
+        property_set("persist.radio.mot_ecc_enabled", "");
         property_set("persist.radio.process_sups_ind", "1");
     }
 
@@ -123,10 +127,18 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     INFO("Found radio id: %s data %s setting build properties for %s device\n", radio, sku, devicename);
 }
 
-static void setMsim(void)
+static void dual_sim(void)
 {
     property_set("persist.radio.force_get_pref", "1");
     property_set("persist.radio.multisim.config", "dsds");
     property_set("persist.radio.plmn_name_cmp", "1");
     property_set("ro.telephony.ril.config", "simactivation");
+}
+
+static void single_sim(void)
+{
+    property_set("persist.radio.force_get_pref", "");
+    property_set("persist.radio.multisim.config", "");
+    property_set("persist.radio.plmn_name_cmp", "");
+    property_set("ro.telephony.ril.config", "");
 }
