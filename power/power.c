@@ -54,7 +54,8 @@
 enum {
     PROFILE_POWER_SAVE = 0,
     PROFILE_BALANCED,
-    PROFILE_HIGH_PERFORMANCE
+    PROFILE_HIGH_PERFORMANCE,
+    PROFILE_MAX
 };
 
 static int current_power_profile = -1;
@@ -200,22 +201,16 @@ static void set_power_profile(int profile)
 
 static void power_hint( __attribute__((unused)) struct power_module *module,
                         __attribute__((unused)) power_hint_t hint,
-                        __attribute__((unused)) void *data)
+                        void *data)
 {
-    char buf[80];
-    int len;
-
     switch (hint) {
     case POWER_HINT_INTERACTION:
         break;
     case POWER_HINT_SET_PROFILE:
-        set_power_profile((int)data);
+        set_power_profile(*(int32_t *)data);
         break;
     case POWER_HINT_LOW_POWER:
-        if ((int)data == 1)
-            set_power_profile(PROFILE_POWER_SAVE);
-        else
-            set_power_profile(PROFILE_BALANCED);
+        /* This hint is handled by the framework */
         break;
     default:
         break;
@@ -225,6 +220,16 @@ static void power_hint( __attribute__((unused)) struct power_module *module,
 static struct hw_module_methods_t power_module_methods = {
     .open = NULL,
 };
+
+
+static int get_feature(__attribute__((unused)) struct power_module *module,
+                       feature_t feature)
+{
+    if (feature == POWER_FEATURE_SUPPORTED_PROFILES) {
+        return PROFILE_MAX;
+    }
+    return -1;
+}
 
 struct power_module HAL_MODULE_INFO_SYM = {
     .common = {
@@ -240,4 +245,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .init = power_init,
     .setInteractive = power_set_interactive,
     .powerHint = power_hint,
+    .getFeature = get_feature
 };
