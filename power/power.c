@@ -29,7 +29,7 @@
 #include <hardware/hardware.h>
 #include <hardware/power.h>
 
-#define HOTPLUG "/sys/module/cluster_plug/parameters/cluster_plug_active"
+#define PREFER_BIG "/sys/module/cluster_plug/parameters/prefer_big"
 
 #define BIG_PATH "/sys/devices/system/cpu/cpu0/cpufreq/interactive/"
 
@@ -98,19 +98,6 @@ static void power_init(__attribute__((unused)) struct power_module *module)
     ALOGI("%s", __func__);
 }
 
-static void hotplug_set(bool enable)
-{
-    if (enable) {
-        sysfs_write(HOTPLUG, "1");
-    } else {
-        sysfs_write(HOTPLUG, "0");
-        sysfs_write2("/sys/devices/system/cpu/cpu4/online", "0", false);
-        sysfs_write2("/sys/devices/system/cpu/cpu5/online", "0", false);
-        sysfs_write2("/sys/devices/system/cpu/cpu6/online", "0", false);
-        sysfs_write2("/sys/devices/system/cpu/cpu7/online", "0", false);
-    }
-}
-
 static bool check_governor(void)
 {
     struct stat s;
@@ -122,27 +109,13 @@ static bool check_governor(void)
 
 static void power_set_interactive(__attribute__((unused)) struct power_module *module, int on)
 {
-    bool gov_interactive;
-
     if (current_power_profile != PROFILE_BALANCED)
         return;
 
-    gov_interactive = check_governor();
-
     if (on) {
-        if (gov_interactive) {
-            sysfs_write(BIG_PATH "hispeed_freq", BIG_HISPEED_FREQ_BLNC);
-            sysfs_write(BIG_PATH "go_hispeed_load", BIG_HISPEED_LOAD_BLNC);
-            sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_BLNC);
-        }
-        hotplug_set(true);
+        sysfs_write(PREFER_BIG, "1");
     } else {
-        if (gov_interactive) {
-            sysfs_write(BIG_PATH "hispeed_freq", BIG_HISPEED_FREQ_SLOW);
-            sysfs_write(BIG_PATH "go_hispeed_load", BIG_HISPEED_LOAD_SLOW);
-            sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_SLOW);
-        }
-        hotplug_set(false);
+        sysfs_write(PREFER_BIG, "0");
     }
 }
 
@@ -164,7 +137,7 @@ static void set_power_profile(int profile)
             sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_BLNC);
         }
 
-        hotplug_set(true);
+        sysfs_write(PREFER_BIG, "1");
         sysfs_write(BOOST_FREQ, BOOST_FREQ_BLNC);
         ALOGD("%s: set balanced mode", __func__);
         break;
@@ -176,7 +149,7 @@ static void set_power_profile(int profile)
             sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_FAST);
         }
 
-        hotplug_set(true);
+        sysfs_write(PREFER_BIG, "1");
         sysfs_write(BOOST_FREQ, BOOST_FREQ_FAST);
         ALOGD("%s: set performance mode", __func__);
         break;
@@ -188,7 +161,7 @@ static void set_power_profile(int profile)
             sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_SLOW);
         }
 
-        hotplug_set(false);
+        sysfs_write(PREFER_BIG, "0");
         sysfs_write(BOOST_FREQ, BOOST_FREQ_SLOW);
         ALOGD("%s: set powersave mode", __func__);
         break;
