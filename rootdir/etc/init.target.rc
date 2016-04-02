@@ -1,5 +1,4 @@
-# Copyright (c) 2009-2012, 2014, The Linux Foundation. All rights reserved.
-# Copyright (c) 2015 The CyanogenMod Project
+# Copyright (c) 2015-2016 The CyanogenMod Project
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -59,20 +58,11 @@ on boot
     chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 
     # little cluster will be hotplugged, but not governed by power HAL
-    chown system system /sys/module/cluster_plug/parameters/cluster_plug_active
-    chmod 0644 /sys/module/cluster_plug/parameters/cluster_plug_active
+    chown system system /sys/module/cluster_plug/parameters/low_power_mode
+    chmod 0644 /sys/module/cluster_plug/parameters/low_power_mode
 
     chown system system /sys/module/cpu_boost/parameters/input_boost_freq
     chmod 0644 /sys/module/cpu_boost/parameters/input_boost_freq
-
-    chown system system /sys/devices/system/cpu/cpu4/online
-    chmod 0644 /sys/devices/system/cpu/cpu4/online
-    chown system system /sys/devices/system/cpu/cpu5/online
-    chmod 0644 /sys/devices/system/cpu/cpu5/online
-    chown system system /sys/devices/system/cpu/cpu6/online
-    chmod 0644 /sys/devices/system/cpu/cpu6/online
-    chown system system /sys/devices/system/cpu/cpu7/online
-    chmod 0644 /sys/devices/system/cpu/cpu7/online
 
 on post-fs-data
     # AK09912 calibration file directory
@@ -94,15 +84,9 @@ on property:sys.boot_completed=1
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     write /sys/devices/system/cpu/cpu0/online 1
 
-    # HMP scheduler load tracking settings
-    write /proc/sys/kernel/sched_window_stats_policy 3
-    write /proc/sys/kernel/sched_ravg_hist_size 5
-
     # HMP scheduler (big.Little cluster related) settings
-    write /proc/sys/kernel/sched_upmigrate 75
-    write /proc/sys/kernel/sched_downmigrate 60
-
-    # HMP Task packing settings for 8939, 8929
+    write /proc/sys/kernel/sched_upmigrate 60
+    write /proc/sys/kernel/sched_downmigrate 35
     write /proc/sys/kernel/sched_small_task 20
 
     # Enable sched guided freq control
@@ -124,13 +108,12 @@ on property:sys.boot_completed=1
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
     start batt_health
-    start msm_irqbalance
 
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
 
     write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/module/cluster_plug/parameters/cluster_plug_active 0
+    write /sys/module/cluster_plug/parameters/active 0
 
     # enable governor for perf cluster
     write /sys/devices/system/cpu/cpu0/online 1
@@ -148,9 +131,16 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 998400
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "50 800000:65 1113600:90"
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "50 800000:65 998400:90"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 499200
 
+    # configure hotplug
+    write /sys/module/cluster_plug/parameters/load_threshold_down 40
+    write /sys/module/cluster_plug/parameters/load_threshold_up 80
+    write /sys/module/cluster_plug/parameters/vote_threshold_down 6
+    write /sys/module/cluster_plug/parameters/vote_threshold_up 2
+    write /sys/module/cluster_plug/parameters/sampling_time 80
+
     write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/module/cluster_plug/parameters/cluster_plug_active 1
+    write /sys/module/cluster_plug/parameters/active 1
