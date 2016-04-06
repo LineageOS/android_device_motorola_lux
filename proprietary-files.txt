@@ -137,3 +137,6 @@ lib/hw/sensors.msm8916.so
 etc/firmware/synaptics-lgd-s332u-15102102-1fb0fc-lux.tdat
 etc/firmware/synaptics-s3346b-15011402-1b5aff-lux.tdat
 etc/firmware/synaptics-tdi-s3346lt-15063001-1debdd-lux.tdat
+
+# WCNSS
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
