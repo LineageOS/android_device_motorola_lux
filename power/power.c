@@ -30,22 +30,17 @@
 #include <hardware/power.h>
 
 #define LOW_POWER "/sys/module/cluster_plug/parameters/low_power_mode"
-
 #define BIG_PATH "/sys/devices/system/cpu/cpu0/cpufreq/interactive/"
-
 #define BOOST_FREQ "/sys/module/cpu_boost/parameters/input_boost_freq"
 
 #define BIG_TARGET_LOADS_FAST "40 800000:50 1113600:60 1344000:70"
 #define BIG_TARGET_LOADS_BLNC "60 800000:70 1113600:80 1344000:85"
-#define BIG_TARGET_LOADS_SLOW "70 800000:80 1113600:90 1344000:95"
 
 #define BIG_HISPEED_LOAD_FAST "60"
 #define BIG_HISPEED_LOAD_BLNC "75"
-#define BIG_HISPEED_LOAD_SLOW "85"
 
 #define BIG_HISPEED_FREQ_FAST "1497600"
 #define BIG_HISPEED_FREQ_BLNC "1113600"
-#define BIG_HISPEED_FREQ_SLOW "960000"
 
 #define BOOST_FREQ_FAST "1344000"
 #define BOOST_FREQ_BLNC "960000"
@@ -133,7 +128,6 @@ static void set_power_profile(int profile)
         if (gov_interactive) {
             sysfs_write(BIG_PATH "go_hispeed_load", BIG_HISPEED_LOAD_BLNC);
             sysfs_write(BIG_PATH "hispeed_freq", BIG_HISPEED_FREQ_BLNC);
-            sysfs_write(BIG_PATH "io_is_busy", "1");
             sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_BLNC);
         }
 
@@ -145,7 +139,6 @@ static void set_power_profile(int profile)
         if (gov_interactive) {
             sysfs_write(BIG_PATH "go_hispeed_load", BIG_HISPEED_LOAD_FAST);
             sysfs_write(BIG_PATH "hispeed_freq", BIG_HISPEED_FREQ_FAST);
-            sysfs_write(BIG_PATH "io_is_busy", "1");
             sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_FAST);
         }
 
@@ -154,13 +147,6 @@ static void set_power_profile(int profile)
         ALOGD("%s: set performance mode", __func__);
         break;
     case PROFILE_POWER_SAVE:
-        if (gov_interactive) {
-            sysfs_write(BIG_PATH "go_hispeed_load", BIG_HISPEED_LOAD_SLOW);
-            sysfs_write(BIG_PATH "hispeed_freq", BIG_HISPEED_FREQ_SLOW);
-            sysfs_write(BIG_PATH "io_is_busy", "0");
-            sysfs_write(BIG_PATH "target_loads", BIG_TARGET_LOADS_SLOW);
-        }
-
         sysfs_write(LOW_POWER, "1");
         sysfs_write(BOOST_FREQ, BOOST_FREQ_SLOW);
         ALOGD("%s: set powersave mode", __func__);
