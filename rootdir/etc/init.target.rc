@@ -111,6 +111,11 @@ on property:sys.boot_completed=1
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/module/cluster_plug/parameters/active 0
 
+    # disable bcl hotplug to switch governor
+    write /sys/devices/soc.0/qcom,bcl.16/mode "disable"
+    write /sys/devices/soc.0/qcom,bcl.16/hotplug_mask 0
+    write /sys/devices/soc.0/qcom,bcl.16/mode "enable"
+
     # enable governor for perf cluster
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
@@ -138,6 +143,11 @@ on property:sys.boot_completed=1
     write /sys/module/cluster_plug/parameters/vote_threshold_down 6
     write /sys/module/cluster_plug/parameters/vote_threshold_up 2
     write /sys/module/cluster_plug/parameters/sampling_time 80
+
+    # re-enable bcl hotplug
+    write /sys/devices/soc.0/qcom,bcl.16/mode "disable"
+    write /sys/devices/soc.0/qcom,bcl.16/hotplug_mask 15
+    write /sys/devices/soc.0/qcom,bcl.16/mode "enable"
 
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/cluster_plug/parameters/active 1
