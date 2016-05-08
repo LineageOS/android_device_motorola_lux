@@ -23,7 +23,8 @@ DEVICE_PATH := device/motorola/lux
 TARGET_OTA_ASSERT_DEVICE := lux,xt1562,xt1563
 
 # Init
-TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_lux.cpp
+TARGET_INIT_VENDOR_LIB := libinit_lux
+TARGET_RECOVERY_DEVICE_MODULES := libinit_lux
 
 # Kernel
 TARGET_KERNEL_CONFIG := lux_defconfig
