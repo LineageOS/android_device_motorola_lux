@@ -20,7 +20,7 @@ include device/motorola/msm8916-common/BoardConfigCommon.mk
 DEVICE_PATH := device/motorola/lux
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := lux,xt1562,xt1563
+TARGET_OTA_ASSERT_DEVICE := lux,lux_uds,xt1562,xt1563
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_lux
