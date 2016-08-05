@@ -41,3 +41,6 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # SELinux
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+
+# Display
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
