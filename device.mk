@@ -29,6 +29,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths_florida.xml
 
+# Firmware Extraction
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/extract_firmware.sh:install/bin/extract_firmware.sh
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \

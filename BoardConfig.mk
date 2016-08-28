@@ -21,6 +21,7 @@ DEVICE_PATH := device/motorola/lux
 
 # Asserts
 TARGET_OTA_ASSERT_DEVICE := lux,lux_uds,xt1562,xt1563
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_lux
