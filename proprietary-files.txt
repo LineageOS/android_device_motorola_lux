@@ -115,9 +115,6 @@ vendor/lib/libchromatix_s5k5e2_liveshot.so
 vendor/lib/libchromatix_s5k5e2_preview.so
 vendor/lib/libchromatix_s5k5e2_snapshot.so
 
-# Charger
-bin/charge_only_mode
-
 # Graphics
 vendor/lib/libc2d30-a4xx.so
 
