@@ -82,6 +82,10 @@ PRODUCT_PACKAGES += \
     sensors.msm8916 \
     sensorhub.msm8916
 
+# RRO
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
+
 # Thermal
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/thermal-engine-lux.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-lux.conf
