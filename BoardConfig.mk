@@ -45,3 +45,7 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Sensors
 BOARD_USES_STML0XX_SENSOR_HUB := true
+
+# SHIMS
+TARGET_LD_SHIM_LIBS += \
+    /system/lib/libmot_sensorlistener.so|libshims_sensorlistener.so
