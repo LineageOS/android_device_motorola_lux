@@ -33,7 +33,6 @@ lib/libAlAisLib.so
 lib/libAlAisTune.so
 lib/libAlAisWrap.so
 lib/libadvalgcore.so
-lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
 lib/libjscore.so
 lib/libjustshoot.so
@@ -48,6 +47,7 @@ vendor/lib/libSonyIMX230PdafLibrary.so
 vendor/lib/libactuator_lc898212xd.so
 vendor/lib/libactuator_lc898212xd_camcorder.so
 vendor/lib/libactuator_lc898212xd_camera.so
+vendor/lib/libcamerabgproc-jni.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmm-abl-oem.so
