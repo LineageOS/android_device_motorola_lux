@@ -36,6 +36,7 @@ lib/libmmcamera_interface.so
 lib/libmmcamera_lux_standardization.so
 lib/libmmjpeg_interface.so
 lib/libmot-qc-fd-offline.so
+lib/libmotocalibration.so
 lib/libqomx_core.so
 lib/hw/camera.msm8916.so:lib/hw/camera.vendor.msm8916.so
 vendor/lib/libSonyIMX230PdafLibrary.so
@@ -113,11 +114,6 @@ vendor/lib/libchromatix_s5k5e2_snapshot.so
 
 # NFC
 etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd
-
-# Sensors
-bin/akmd09912
-lib/libmotocalibration.so
-lib/hw/sensors.msm8916.so
 
 # Touchscreen
 etc/firmware/synaptics-lgd-s332u-15102102-1fb0fc-lux.tdat

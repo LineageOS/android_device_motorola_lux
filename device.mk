@@ -64,6 +64,13 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_PACKAGES += \
     init.target.rc
 
+# Sensors
+PRODUCT_PACKAGES += \
+    akmd09912 \
+    stml0xx \
+    sensors.msm8916 \
+    sensorhub.msm8916
+
 # Thermal
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/thermal-engine-lux.conf:system/etc/thermal-engine-lux.conf
