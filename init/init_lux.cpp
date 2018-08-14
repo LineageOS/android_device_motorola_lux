@@ -122,6 +122,7 @@ void vendor_load_properties()
 
 static void dual_sim(void)
 {
+    property_set("ro.telephony.default_network", "10,10");
     property_set("persist.radio.force_get_pref", "1");
     property_set("persist.radio.multisim.config", "dsds");
     property_set("persist.radio.plmn_name_cmp", "1");
@@ -130,6 +131,7 @@ static void dual_sim(void)
 
 static void single_sim(void)
 {
+    property_set("ro.telephony.default_network", "10");
     property_set("persist.radio.force_get_pref", "");
     property_set("persist.radio.multisim.config", "");
     property_set("persist.radio.plmn_name_cmp", "");
