@@ -682,8 +682,10 @@
 	</path>
 
 	<path name="voice-speaker">
+		<!-- SQK: breaks mic on OSS audio HAL
 		<ctl name="VOC_EXT_EC MUX" value="SLIMBUS_1_TX" />
 		<ctl name="SLIMTX5 Input 1" value="AIF1RX2" />
+		-->
 		<path name="speaker" />
 	</path>
 
