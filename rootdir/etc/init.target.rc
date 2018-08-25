@@ -25,6 +25,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+on early-init
+    start lux-config-sh
+
 on boot
     # AK09912 driver parameter permissions
     chown system compass /sys/class/compass/akm09912/accel
@@ -73,6 +76,23 @@ service akmd09912 /system/vendor/bin/akmd09912
     class main
     user compass
     group compass misc input
+
+service lux-config-sh /vendor/bin/init.device.config.sh
+    class core
+    user root
+    oneshot
+    disabled
+
+on property:ro.device.dualsim=true
+    setprop ro.telephony.default_network "9,1"
+    setprop persist.radio.force_get_pref 1
+    setprop persist.radio.multisim.config dsds
+    setprop persist.radio.plmn_name_cmp 1
+    setprop ro.telephony.ril.config simactivation
+
+on property:ro.device.dualsim=false
+    setprop ro.telephony.default_network 9
+    setprop persist.radio.multisim.config ""
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler fiops
