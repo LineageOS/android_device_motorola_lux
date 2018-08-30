@@ -45,8 +45,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml
 
 PRODUCT_COPY_FILES += \
-    device/motorola/lux/configs/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
-    device/motorola/lux/configs/libnfc-brcm-20795a20.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm-20795a20.conf
+    device/motorola/lux/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
+    device/motorola/lux/configs/libnfc-nci-20795a20.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci-20795a20.conf
 
 PRODUCT_PACKAGES += \
     libnfc \
