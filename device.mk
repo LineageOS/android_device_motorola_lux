@@ -18,9 +18,6 @@
 $(call inherit-product, device/motorola/msm8916-common/msm8916.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk)
 
-# Screen density
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
-
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
