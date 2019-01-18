@@ -28,6 +28,9 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/bin/mediaserver=25 \
     /vendor/bin/mm-qcamera-daemon=25
 
+# Display
+TARGET_SCREEN_DENSITY := 480
+
 # HIDL Manifest
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
