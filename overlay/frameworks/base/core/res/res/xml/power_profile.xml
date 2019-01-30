@@ -11,7 +11,7 @@
     <item name="wifi.active">118</item>
     <item name="wifi.scan">71</item>
     <item name="gps.on">113</item>
-    <item name="radio.active">390</item>
+    <item name="radio.active">60</item>
     <item name="radio.scanning">28</item>
     <array name="radio.on">
         <value>28</value>
