@@ -19,4 +19,4 @@ Camera  | 21 MP, 5344 x 4008 pixels, autofocus, LED flash
 
 Copyright 2015 - The CyanogenMod Project.
 
-![Moto X Play](https://wiki.cyanogenmod.org/images/thumb/d/db/Lux.png/309px-Lux.png "Moto X Play")
+![Moto X Play](https://cdn2.gsmarena.com/vv/pics/motorola/moto-x-play-1.jpg "Moto X Play")
