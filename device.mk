@@ -61,6 +61,9 @@ PRODUCT_PACKAGES += \
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# System Properties
+$(call inherit-product, device/motorola/lux/system_prop.mk)
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.device.config.sh \
