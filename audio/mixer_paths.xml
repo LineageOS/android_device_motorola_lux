@@ -172,8 +172,8 @@
 	<!-- Voice HDMI -->
 	<ctl name="HDMI_RX_Voice Mixer CSVoice" value="0" />
 	<!-- Voice BTSCO -->
-	<ctl name="AUX PCM SampleRate" value="8000" />
-	<ctl name="Internal BTSCO SampleRate" value="8000" />
+	<ctl name="AUX PCM SampleRate" value="BTSCO_RATE_8KHZ" />
+	<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_8KHZ" />
 	<ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="0" />
 	<ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
 
@@ -297,7 +297,7 @@
 	</path>
 
 	<path name="deep-buffer-playback bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="deep-buffer-playback bt-sco" />
 	</path>
 
@@ -314,7 +314,7 @@
 	</path>
 
 	<path name="low-latency-playback bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="low-latency-playback bt-sco" />
 	</path>
 
@@ -335,7 +335,7 @@
 	</path>
 
 	<path name="compress-offload-playback bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="compress-offload-playback bt-sco" />
 	</path>
 
@@ -352,7 +352,7 @@
 	</path>
 
 	<path name="audio-record bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="audio-record bt-sco" />
 	</path>
 
@@ -372,7 +372,7 @@
 	</path>
 
 	<path name="audio-record-compress bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="audio-record-compress bt-sco" />
 	</path>
 
@@ -395,7 +395,7 @@
 	</path>
 
 	<path name="voice-call bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="voice-call bt-sco" />
 	</path>
 
@@ -410,7 +410,7 @@
 	</path>
 
 	<path name="voice2-call bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="voice2-call bt-sco" />
 	</path>
 
@@ -526,7 +526,7 @@
 	</path>
 
 	<path name="hfp-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="hfp-sco" />
 	</path>
 
@@ -541,7 +541,7 @@
 	</path>
 
 	<path name="volte-call bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="volte-call bt-sco" />
 	</path>
 
@@ -556,7 +556,7 @@
 	</path>
 
 	<path name="compress-voip-call bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="compress-voip-call bt-sco" />
 	</path>
 
@@ -571,7 +571,7 @@
 	</path>
 
 	<path name="vowlan-call bt-sco-wb">
-		<ctl name="Internal BTSCO SampleRate" value="16000" />
+		<ctl name="Internal BTSCO SampleRate" value="BTSCO_RATE_16KHZ" />
 		<path name="vowlan-call bt-sco" />
 	</path>
 
