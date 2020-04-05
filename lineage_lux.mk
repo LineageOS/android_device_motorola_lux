@@ -26,7 +26,6 @@ PRODUCT_NAME := lineage_lux
 PRODUCT_MODEL := Moto X Play
 PRODUCT_BRAND := Motorola
 PRODUCT_MANUFACTURER := Motorola
-PRODUCT_RELEASE_NAME := lux
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="lux_retca-user 5.1.1 LPD23.118-10 19 release-keys"
