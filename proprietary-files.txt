@@ -1,4 +1,4 @@
-# Proprietary files for lux
+# Device proprietary files - from Motorola package version NPD26.48-24-1  , unless pinned
 
 # Audio
 vendor/etc/acdbdata/Bluetooth_cal.acdb
