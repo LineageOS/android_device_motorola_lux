@@ -77,7 +77,7 @@ on post-fs-data
     mkdir /data/vendor/nfc/param 0770 nfc nfc
 
 # Start AKM executable
-service akmd09912 /system/vendor/bin/akmd09912
+service akmd09912 /vendor/bin/akmd09912
     class main
     user compass
     group compass misc input

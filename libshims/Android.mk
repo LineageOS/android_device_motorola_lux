@@ -34,4 +34,5 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libbase \
     libsensor
+LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
