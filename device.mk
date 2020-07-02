@@ -33,6 +33,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshims_sensorlistener
 
+# Display
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.use_buffer_age=false \
+    ro.sf.lcd_density=480
+
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
