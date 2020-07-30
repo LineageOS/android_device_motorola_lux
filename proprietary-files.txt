@@ -38,7 +38,7 @@ vendor/lib/libmmjpeg_interface.so
 vendor/lib/libmot-qc-fd-offline.so
 vendor/lib/libmotocalibration.so
 vendor/lib/libqomx_core.so
-vendor/lib/hw/camera.msm8916.so:lib/hw/camera.vendor.msm8916.so
+vendor/lib/hw/camera.vendor.msm8916.so
 vendor/lib/libSonyIMX230PdafLibrary.so
 vendor/lib/libactuator_lc898212xd.so
 vendor/lib/libactuator_lc898212xd_camcorder.so
