@@ -101,6 +101,7 @@ on property:ro.device.dualsim=false
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler fiops
+    setprop ro.gsm.data_retry_config "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000"
 
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     write /sys/devices/system/cpu/cpu0/online 1
