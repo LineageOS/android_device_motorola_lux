@@ -806,10 +806,8 @@
 		<ctl name="SLIM_0_TX Channels" value="Two" />
 		<ctl name="SLIMTX1 Input 1" value="IN2L" />
 		<ctl name="SLIMTX2 Input 1" value="IN3R" />
-		<ctl name="IN2L Volume" value="16" />
-		<ctl name="IN3R Volume" value="16" />
-		<ctl name="IN2L Digital Volume" value="160" />
-		<ctl name="IN3R Digital Volume" value="160" />
+		<ctl name="IN2L Volume" value="12" />
+		<ctl name="IN3R Volume" value="12" />
 	</path>
 
 	<path name="stereo-mic12">
