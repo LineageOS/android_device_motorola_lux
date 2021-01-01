@@ -26,7 +26,6 @@ TARGET_OTA_ASSERT_DEVICE := lux,lux_uds,xt1562,xt1563
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /system/bin/cameraserver=25 \
     /system/bin/mediaserver=25 \
     /vendor/bin/mm-qcamera-daemon=25
 
