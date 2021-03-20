@@ -93,3 +93,7 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 # Thermal
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/configs/thermal-engine-lux.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-lux.conf
+
+# Get non-open-source specific aspects
+$(call inherit-product, vendor/motorola/lux/lux-vendor.mk)
+
