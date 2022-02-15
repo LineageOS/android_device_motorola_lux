@@ -13,6 +13,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=8m
 
+# Display
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.use_buffer_age=false
+
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.mot_ecc_enabled=1
